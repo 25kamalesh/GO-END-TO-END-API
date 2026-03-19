@@ -5,6 +5,7 @@ import (
 
 	"github.com/25Kamalesh/go_todo_api/internal/config"
 	"github.com/25Kamalesh/go_todo_api/internal/database"
+	"github.com/25Kamalesh/go_todo_api/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,6 +21,10 @@ if err != nil {
 	log.Fatal("Failed to connect to database: ", err)
 }
 defer pool.Close()
+
+	todoHandler := &handlers.TodoHandler{Pool: pool}
+
+
 	var router *gin.Engine = gin.Default()
 	router.SetTrustedProxies(nil)
 	router.GET("/", func(c *gin.Context) {
@@ -29,5 +34,6 @@ defer pool.Close()
 			"database": "Connected Successfully",
 		})
 	})
+	router.POST("/todos" , todoHandler.CreateTodoHandler)
 	router.Run(":" + cfg.PORT)
 }
