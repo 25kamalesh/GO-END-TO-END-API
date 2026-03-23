@@ -1,5 +1,7 @@
 package models
 
+// THIS FILE CONTAINS REQUEST MODELS USED TO MAP THE INCOMING REQUESTS BODY  TO STRUCTS
+
 // Used when user registers
 type RegisterRequest struct {
 	Name     string `json:"name" binding:"required,min=2"`
