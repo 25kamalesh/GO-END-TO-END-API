@@ -16,10 +16,10 @@ func GenerateToken(userID int , secret []byte) (string, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	return token.SignedString(secret)
+	return token.SignedString(secret) // returns the signed token string along with any errors that may occur during the signing process
 }
 
-// valiate the token and return the user id if valid
+// ValidateToken validates the token and returns the user id if valid
 func ValidateToken(tokenString string, secret []byte) (int, error) {
 
 	token, err := jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
@@ -36,3 +36,4 @@ func ValidateToken(tokenString string, secret []byte) (int, error) {
 
 	return userID, nil
 }
+

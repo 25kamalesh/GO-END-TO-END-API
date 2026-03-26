@@ -12,7 +12,11 @@ type TodoHandler struct {
 	Pool *pgxpool.Pool
 }
 
-
+func NewTodoHandler(pool *pgxpool.Pool) *TodoHandler {
+	return &TodoHandler{
+		Pool: pool,
+	}
+}
 
 func (h *TodoHandler) CreateTodoHandler(c *gin.Context) {
 	var input *models.CreateTodoRequest

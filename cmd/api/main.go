@@ -22,8 +22,7 @@ if err != nil {
 }
 defer pool.Close()
 
-	todoHandler := &handlers.TodoHandler{Pool: pool}
-
+	todoHandler := handlers.NewTodoHandler(pool)
 
 	var router *gin.Engine = gin.Default()
 	router.SetTrustedProxies(nil)
