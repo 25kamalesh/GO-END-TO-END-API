@@ -7,7 +7,7 @@ import (
 )
 
 // GenerateToken creates JWT for user
-func GenerateToken(userID int , secret []byte) (string, error) {
+func GenerateToken(userID int, secret []byte) (string, error) {
 
 	claims := jwt.MapClaims{
 		"user_id": userID,
@@ -36,4 +36,3 @@ func ValidateToken(tokenString string, secret []byte) (int, error) {
 
 	return userID, nil
 }
-

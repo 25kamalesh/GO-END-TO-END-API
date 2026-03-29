@@ -7,7 +7,6 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-
 // CreateUser inserts a new user into the database
 func CreateUser(
 	ctx context.Context,
@@ -34,7 +33,6 @@ func CreateUser(
 
 	return &user, nil
 }
-
 
 // GetUserByEmail fetches a user using email (used for login)
 func GetUserByEmail(
